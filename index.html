@@ -21,7 +21,8 @@
         const questions = [
             { 
                 question: "Do you prefer rom-com or action movies?", 
-                options: ["Rom-Com", "Action"]
+                options: ["Rom-Com", "Action"],
+                scores: { "Rom-Com": 1, "Action": 0 }
             }
         ];
         
@@ -33,10 +34,10 @@
             questionDiv.classList.add("question");
             questionDiv.innerHTML = `<p>${q.question}</p>`;
 
-            q.options.forEach((option, optIndex) => {
+            q.options.forEach((option) => {
                 let button = document.createElement("button");
                 button.innerText = option;
-                button.onclick = () => answer(index, optIndex);
+                button.onclick = () => answer(index, q.scores[option]);
                 questionDiv.appendChild(button);
             });
 
@@ -52,9 +53,10 @@
                 document.getElementById("result").innerText = "Please answer all questions!";
                 return;
             }
-            let score = (answers[0] === 0) ? 100 : 50; // Example: Rom-Com = 100%, Action = 50%
+            let score = (answers.reduce((a, b) => a + b, 0) / questions.length) * 100;
             document.getElementById("result").innerText = `Your compatibility score with Yves is ${score}%!`;
         }
     </script>
 </body>
 </html>
+
