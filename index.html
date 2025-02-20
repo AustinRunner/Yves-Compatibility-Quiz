@@ -16,6 +16,7 @@
     <h2>Are You Compatible with Yves? 💕</h2>
     <div id="quiz"></div>
     <button onclick="calculateScore()">See My Score</button>
+    <button onclick="resetQuiz()">Retake Test</button>
     <p id="result"></p>
 
     <script>
@@ -75,6 +76,19 @@
             let score = (answers.reduce((a, b) => a + b, 0) / questions.length) * 100;
             document.getElementById("result").innerText = `Your compatibility score with Yves is ${score}%!`;
         }
+
+        function resetQuiz() {
+            answers.fill(null);
+            document.getElementById("result").innerText = "";
+            let buttons = document.querySelectorAll("button");
+            buttons.forEach(button => {
+                button.classList.remove("selected");
+                button.style.backgroundColor = "lightgray";
+                button.style.color = "blue";
+            });
+        }
+
+        
     </script>
 </body>
 </html>
