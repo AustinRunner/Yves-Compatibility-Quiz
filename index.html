@@ -59,12 +59,12 @@
         buttons.forEach(btn => {
         btn.classList.remove("selected");
         btn.style.backgroundColor = "lightgray";  // Reset other buttons
-        btn.style.color = "blue";  
+        btn.style.color = "darkgray";  
         });
         
         // Apply 'selected' style to the clicked button
         button.classList.add("selected");
-        button.style.backgroundColor = "black";  // Dark fill for selection
+        button.style.backgroundColor = "darkgray";  // Dark fill for selection
         button.style.color = "white";  // Light font for contrast
         }
 
@@ -84,7 +84,7 @@
             buttons.forEach(button => {
                 button.classList.remove("selected");
                 button.style.backgroundColor = "lightgray";
-                button.style.color = "blue";
+                button.style.color = "darkgray";
             });
         }
 
