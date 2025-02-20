@@ -43,15 +43,28 @@
             q.options.forEach((option) => {
                 let button = document.createElement("button");
                 button.innerText = option;
-                button.onclick = () => answer(index, q.scores[option]);
+                button.onclick = () => answer(index, q.scores[option],button);
                 questionDiv.appendChild(button);
             });
 
             quizDiv.appendChild(questionDiv);
         });
 
-        function answer(index, value) {
-            answers[index] = value;
+        function answer(index, value, button) {
+        answers[index] = value;
+        
+        // Remove 'selected' class from all buttons in the same question
+        let buttons = button.parentNode.querySelectorAll("button");
+        buttons.forEach(btn => {
+        btn.classList.remove("selected");
+        btn.style.backgroundColor = "lightgray";  // Reset other buttons
+        btn.style.color = "blue";  
+        });
+        
+        // Apply 'selected' style to the clicked button
+        button.classList.add("selected");
+        button.style.backgroundColor = "black";  // Dark fill for selection
+        button.style.color = "white";  // Light font for contrast
         }
 
         function calculateScore() {
