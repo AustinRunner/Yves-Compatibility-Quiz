@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-    <h2>Are You Compatible with Yves? 💕</h2>
+    <h2>💕 How Compatible are You and Yves? 💕</h2>
     <div id="quiz"></div>
     <button onclick="calculateScore()">See My Score</button>
     <button onclick="resetQuiz()">Retake Test</button>
@@ -23,14 +23,47 @@
     <script>
         const questions = [
             { 
-                question: "Do you prefer rom-com or action movies?", 
-                options: ["Romance", "Action"],
-                scores: { "Romance": 1, "Action": 0 }
+                question: "Movie:", 
+                options: ["Guns blazing", "Hearts racing"],
+                scores: { "Guns blazing": 0.2, "hearts racing": 0.8 }
             },
+             { 
+                question: "Vegan or Anything Goes?", 
+                options: ["Vegan", "Anything Goes"],
+                scores: { "Vegan": 0 "Anything Goes": 1 }
+            },
+            { 
+                question: "Dinner:", 
+                options: ["Raw and slippery", "Hot and dripping"],
+                scores: { "Raw and slippery": 1, "Hot and dripping": 0 }
+            },
+              { 
+                question: "Drinks:", 
+                options: ["Slow sipping", "Chug it down"],
+                scores: { "Slow sipping": 1, "Chug it down": 0 }
+            },
+              { 
+                question: "Body Art:", 
+                options: ["Inked Up", "Blank Canvas"],
+                scores: { "Inked Up": 0.2, "Blank Canvas": 0.8 }
+            },
+             { 
+                question: "Vacation:", 
+                options: ["Hot and Sandy", "Rough and Wild"],
+                scores: { "Hot and Sandy": 0.2, "Rough and Wild": 0.8 }
+            },
+            
+                { 
+                question: "In Bed:", 
+                options: ["Fast and furious", "The English Patient"],
+                scores: { "Fast and furious": 0.2, " The English Patient": 0.8 }
+            },
+            
+            
            { 
-                question: "Do you prefer Skiing, Scuba Diving or Both?", 
-                options: ["Skiing", "Scuba Diving", "Both"],
-                scores: { "Skiing": 0.5, "Scuba Diving": 0.5, "Both": 1 }
+                question: "Weekend:", 
+                options: ["Between the sheets", "Scuba Diving"],
+                scores: { "Between the sheets": 0.5, "Scuba Diving": 0.5 }
            }
         ];
         
