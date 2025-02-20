@@ -34,17 +34,22 @@
         ];
         
         const quizDiv = document.getElementById("quiz");
-        let answers = [];
-
+        let answers = Array(questions.length).fill(null);
+        
         questions.forEach((q, index) => {
-            let questionDiv = document.createElement("div");
-            questionDiv.classList.add("question");
-            questionDiv.innerHTML = `<p>${q}</p>
-                <button onclick="answer(${index}, 1)">Yes</button>
-                <button onclick="answer(${index}, 0)">No</button>`;
-            quizDiv.appendChild(questionDiv);
-            answers.push(null);
-        });
+        let questionDiv = document.createElement("div");
+        questionDiv.classList.add("question");
+        questionDiv.innerHTML = `<p>${q.question}</p>`;
+        
+        q.options.forEach((option, optIndex) => {
+        let button = document.createElement("button");
+        button.innerText = option;
+        button.onclick = () => answer(index, optIndex);
+        questionDiv.appendChild(button);
+    });
+
+    quizDiv.appendChild(questionDiv);
+});
 
         function answer(index, value) {
             answers[index] = value;
