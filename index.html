@@ -7,7 +7,7 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
         .question { margin: 20px 0; font-size: 18px; }
-        button { padding: 10px 15px; margin: 10px; cursor: pointer; font-size: 16px; background-color: lightgray; color: darkgrey ; border: none}
+        button { padding: 10px 15px; margin: 10px; cursor: pointer; font-size: 16px; background-color: lightgray; color: darkslategray ; border: none}
         button.selected { background-color: darkslategray; color: white; }
         #result { font-size: 22px; font-weight: bold; margin-top: 20px }
     </style>
@@ -95,7 +95,7 @@
         buttons.forEach(btn => {
         btn.classList.remove("selected");
         btn.style.backgroundColor = "lightgray";  // Reset other buttons
-        btn.style.color = "darkgray";  
+        btn.style.color = "darkslategray";  
         });
         
         // Apply 'selected' style to the clicked button
