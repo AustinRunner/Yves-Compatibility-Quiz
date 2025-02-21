@@ -10,6 +10,10 @@
             --button-text: darkslategray; /* Medium dark gray for text */ 
             --button-selected-bg: darkslategray; /* Softer than black but still strong */ 
             --button-selected-text: white; /* White for contrast */
+            --see-score-bg: darkred; /* Unique color */
+            --see-score-text: white;
+            --retake-test-bg: navy;/* Unique color */
+            --retake-test-text: white;
              }
 
         
@@ -19,20 +23,11 @@
         button.selected { background-color: var(--button-selected-bg); color: var(--button-selected-text); }
         
         /* Custom Styles for "See My Score" */
-        .see-score {
-            background-color: darkred;  /* Unique color */
-            color: white;
-            font-weight: bold;
-        }
+        .see-score {background-color: var( --see-score-bg); color: white;font-weight: bold;}
 
         /* Custom Styles for "Retake Test" */
-        .retake-test {
-            background-color: navy;  /* Unique color */
-            color: white;
-            font-weight: bold;
-        }
+        .retake-test {background-color: var( --retake-test-bg); color:  var( --retake-test-text); font-weight: bold;}
 
-        
         #result { font-size: 22px; font-weight: bold; margin-top: 20px }
     </style>
 </head>
@@ -145,7 +140,7 @@
         function resetQuiz() {
             answers.fill(null);
             document.getElementById("result").innerText = "";
-            let buttons = document.querySelectorAll("button");
+            let buttons = document.querySelectorAll(".question button");
             buttons.forEach(button => {
                 button.classList.remove("selected");
                 button.style.backgroundColor =  getCSSVar('--button-bg');
