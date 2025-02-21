@@ -52,19 +52,16 @@
                 options: ["Hot and Sandy", "Rough and Wild"],
                 scores: { "Hot and Sandy": 0.2, "Rough and Wild": 0.8 }
             },
-            
                 { 
                 question: "In Bed:", 
                 options: ["Fast and furious", "The English Patient"],
                 scores: { "Fast and furious": 0.2, "The English Patient": 0.8 }
             },
-            
-            
-           { 
+              { 
                 question: "Weekend:", 
                 options: ["Between the sheets", "Scuba Diving"],
                 scores: { "Between the sheets": 0.5, "Scuba Diving": 0.5 }
-           }
+            }
         ];
         
         const quizDiv = document.getElementById("quiz");
@@ -98,7 +95,7 @@
         
         // Apply 'selected' style to the clicked button
         button.classList.add("selected");
-        button.style.backgroundColor = "darkgray";  // Dark fill for selection
+        button.style.backgroundColor = "darkslategray";  // Dark fill for selection
         button.style.color = "white";  // Light font for contrast
         }
 
@@ -118,7 +115,7 @@
             buttons.forEach(button => {
                 button.classList.remove("selected");
                 button.style.backgroundColor = "lightgray";
-                button.style.color = "darkgray";
+                button.style.color = "darkslategray";
             });
         }
 
