@@ -105,7 +105,7 @@
                 return;
             }
             let score = (answers.reduce((a, b) => a + b, 0) / questions.length) * 100;
-            document.getElementById("result").innerText = `Your compatibility score with Yves is ${score}%!`;
+            document.getElementById("result").innerText = `Your compatibility score with Yves is ${Math.round(score)}%!`;
         }
 
         function resetQuiz() {
