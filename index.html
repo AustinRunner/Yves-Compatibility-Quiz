@@ -17,14 +17,31 @@
         .question { margin: 20px 0; font-size: 18px; }
         button { padding: 10px 15px; margin: 10px; cursor: pointer; font-size: 16px; background-color: var(--button-bg); color:  var(--button-text) ; border: none}
         button.selected { background-color: var(--button-selected-bg); color: var(--button-selected-text); }
+        
+        /* Custom Styles for "See My Score" */
+        .see-score {
+            background-color: darkred;  /* Unique color */
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Custom Styles for "Retake Test" */
+        .retake-test {
+            background-color: navy;  /* Unique color */
+            color: white;
+            font-weight: bold;
+        }
+
+        
         #result { font-size: 22px; font-weight: bold; margin-top: 20px }
     </style>
 </head>
 <body>
     <h2>💕 How Compatible are You and Yves? 💕</h2>
     <div id="quiz"></div>
-    <button onclick="calculateScore()">See My Score</button>
-    <button onclick="resetQuiz()">Retake Test</button>
+    <!-- Custom Buttons with Unique Classes -->
+    <button class= "see-score" onclick="calculateScore()">See My Score</button>
+    <button class = "retake-test" onclick="resetQuiz()">Retake Test</button>
     <h2> 💕 Match? 💕</h2>
     <p id="result"></p>
 
