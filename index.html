@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yves Compatibility Quiz</title>
     <style>
+        :root {
+            --button-bg: lightgray; /* Light gray for default button */ 
+            --button-text: darkslategray; /* Medium dark gray for text */ 
+            --button-selected-bg: darkslategray; /* Softer than black but still strong */ 
+            --button-selected-text: white; /* White for contrast */
+             }
+
+        
         body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
         .question { margin: 20px 0; font-size: 18px; }
         button { padding: 10px 15px; margin: 10px; cursor: pointer; font-size: 16px; background-color: lightgray; color: darkslategray ; border: none}
@@ -87,6 +95,10 @@
             quizDiv.appendChild(questionDiv);
         });
 
+        function getCSSVar(variable) {
+        return getComputedStyle(document.documentElement).getPropertyValue(variable).trim();
+        }
+        
         function answer(index, value, button) {
         answers[index] = value;
         
@@ -94,14 +106,14 @@
         let buttons = button.parentNode.querySelectorAll("button");
         buttons.forEach(btn => {
         btn.classList.remove("selected");
-        btn.style.backgroundColor = "lightgray";  // Reset other buttons
-        btn.style.color = "darkslategray";  
+        btn.style.backgroundColor =  getCSSVar('--button-bg');  // Reset other buttons
+        btn.style.color = getCSSVar('--button-text'); 
         });
         
         // Apply 'selected' style to the clicked button
         button.classList.add("selected");
-        button.style.backgroundColor = "darkslategray";  // Dark fill for selection
-        button.style.color = "white";  // Light font for contrast
+        button.style.backgroundColor = getCSSVar('--button-selected-bg');  // Dark fill for selection
+        button.style.color = getCSSVar('--button-selected-text');  // Light font for contrast
         }
 
         function calculateScore() {
@@ -119,8 +131,8 @@
             let buttons = document.querySelectorAll("button");
             buttons.forEach(button => {
                 button.classList.remove("selected");
-                button.style.backgroundColor = "lightgray";
-                button.style.color = "darkslategray";
+                button.style.backgroundColor =  getCSSVar('--button-bg');
+                button.style.color = getCSSVar('--button-text'); 
             });
         }
 
