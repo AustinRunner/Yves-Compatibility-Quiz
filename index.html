@@ -1,44 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yves Compatibility Quiz</title>
+     <!-- Metadata and page settings -->
+    <meta charset="UTF-8"><!-- Defines character encoding to support special characters -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Ensures the page is responsive on all devices -->
+    <title>Yves Compatibility Quiz</title><!-- Title displayed on browser tab -->
+    
     <style>
+        /* Root CSS Variables: These define colors that can be used throughout the stylesheet */
         :root {
-            --button-bg: lightgray; /* Light gray for default button */ 
-            --button-text: darkslategray; /* Medium dark gray for text */ 
-            --button-selected-bg: darkslategray; /* Softer than black but still strong */ 
-            --button-selected-text: white; /* White for contrast */
-            --see-score-bg: darkred; /* Unique color */
-            --see-score-text: white;
-            --retake-test-bg: navy;/* Unique color */
-            --retake-test-text: white;
+            --button-bg: lightgray; /* Default button background color */
+            --button-text: darkgray; /* Default button text color */
+            --button-selected-bg: darkslategray; /* Background color for selected answer buttons */
+            --button-selected-text: white; /* Text color for selected answer buttons */
+            --see-score-bg: darkred; /* Background color for "See My Score" button */
+            --see-score-text: white; /* Text color for "See My Score" button */
+            --retake-test-bg: navy; /* Background color for "Retake Test" button */
+            --retake-test-text: white; /* Text color for "Retake Test" button */
              }
 
-        
-        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-        .question { margin: 20px 0; font-size: 18px; }
-        button { padding: 10px 15px; margin: 10px; cursor: pointer; font-size: 16px; background-color: var(--button-bg); color:  var(--button-text) ; border: none}
-        button.selected { background-color: var(--button-selected-bg); color: var(--button-selected-text); }
+        /* General styles for the page */
+        body {
+            font-family: Arial, sans-serif; /* Sets the font for the entire page */
+            text-align: center; /* Centers text and elements */
+            padding: 20px; /* Adds spacing around the content */
+        }
+
+        /* Styling for question containers */
+        .question {
+            margin: 20px 0; /* Adds vertical spacing between questions */
+            font-size: 18px; /* Sets text size for questions */
+        }
+
+        /* General styling for all buttons */
+        button {
+            padding: 10px 15px; /* Adds spacing inside buttons */
+            margin: 10px; /* Adds spacing around buttons */
+            cursor: pointer; /* Changes the cursor to indicate clickable buttons */
+            font-size: 16px; /* Sets the button text size */
+            background-color: var(--button-bg); /* Uses default background color */
+            color: var(--button-text); /* Uses default text color */
+            border: none; /* Removes button border */
+        }
+
+        /* Styling for selected answer buttons */
+        button.selected {
+            background-color: var(--button-selected-bg); /* Changes background color when selected */
+            color: var(--button-selected-text); /* Changes text color when selected */
+        }
         
         /* Custom Styles for "See My Score" */
-        .see-score {background-color: var( --see-score-bg); color: white;font-weight: bold;}
+        .see-score {
+            background-color: var( --see-score-bg); 
+            color: white;font-weight: bold;
+        }
 
         /* Custom Styles for "Retake Test" */
-        .retake-test {background-color: var( --retake-test-bg); color:  var( --retake-test-text); font-weight: bold;}
+        .retake-test {
+            background-color: var( --retake-test-bg); 
+            color: var( --retake-test-text); 
+            font-weight: bold;
+        }
 
-        #result { font-size: 22px; font-weight: bold; margin-top: 20px }
+        /* Styling for quiz result text */
+        #result {
+            font-size: 22px; /* Increases result text size */
+            font-weight: bold; /* Makes result text bold */
+            margin-top: 20px; /* Adds spacing above result text */
+        }
     </style>
 </head>
+
+    
 <body>
     <h2>💕 How Compatible are You and Yves? 💕</h2>
-    <div id="quiz"></div>
+    <div id="quiz"></div><!-- Container where quiz questions will be dynamically inserted -->
+    
     <!-- Custom Buttons with Unique Classes -->
     <button class= "see-score" onclick="calculateScore()">See My Score</button>
     <button class = "retake-test" onclick="resetQuiz()">Retake Test</button>
+    
     <h2> 💕 Match? 💕</h2>
-    <p id="result"></p>
+    <p id="result"></p><!-- Displays the user's score -->
 
     <script>
         const questions = [
@@ -88,28 +131,37 @@
                 scores: { "Fast & furious": 0, "The English Patient": 1 }
             }
         ];
-        
-        const quizDiv = document.getElementById("quiz");
-        let answers = Array(questions.length).fill(null);
+
+        /**
+         * Dynamically generates quiz questions and answer buttons
+         * - Inserts each question into the quiz container
+         * - Creates buttons for each answer option */
+        const quizDiv = document.getElementById("quiz");// Selects the quiz container
+        let answers = Array(questions.length).fill(null);// Initializes an array to store user answers
 
         questions.forEach((q, index) => {
-            let questionDiv = document.createElement("div");
-            questionDiv.classList.add("question");
-            questionDiv.innerHTML = `<p>${q.question}</p>`;
+            let questionDiv = document.createElement("div");// Creates a container for each question
+            questionDiv.classList.add("question");// Assigns the 'question' class for styling
+            questionDiv.innerHTML = `<p>${q.question}</p>`;// Inserts the question text
 
             q.options.forEach((option) => {
-                let button = document.createElement("button");
-                button.innerText = option;
-                button.onclick = () => answer(index, q.scores[option],button);
-                questionDiv.appendChild(button);
+                let button = document.createElement("button");// Creates a button for each answer
+                button.innerText = option; // Sets button text to the answer option
+                button.onclick = () => answer(index, q.scores[option], button); // Assigns click event
+                questionDiv.appendChild(button); // Adds button to the question container
             });
 
-            quizDiv.appendChild(questionDiv);
+            quizDiv.appendChild(questionDiv);// Adds the question container to the quiz div
         });
 
+        /**
+         * Utility function to get a CSS variable value
+         * @param {string} variable - The CSS variable name (e.g., '--button-bg')
+         * @returns {string} The computed value of the CSS variable */
         function getCSSVar(variable) {
         return getComputedStyle(document.documentElement).getPropertyValue(variable).trim();
         }
+
         
         function answer(index, value, button) {
         answers[index] = value;
